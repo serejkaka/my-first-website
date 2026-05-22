@@ -154,17 +154,16 @@ body {
 .card-preview { height: 280px; background: #000000; display: flex; align-items: center; justify-content: center; }
 .card-visual {
     width: 120px; height: 120px; border: 2px dashed #2997ff; color: #2997ff;
-    display: flex; align-items: center; justify-content: center; font-size: 0.8rem; border-radius: 12px;
+    display: flex; align-iems: center; justify-content: center; font-size: 0.8rem; border-radius: 12px;
 }
-.card-info { padding: 30px; }
+.card-info { padding: 30px; 
 .card-tag { background: rgba(41,151,255,0.15); color: #2997ff; font-size: 0.75rem; font-weight: 600; padding: 4px 10px; border-radius: 10px; }
 .card-info h3 { font-size: 1.6rem; margin: 12px 0 8px 0; }
 .card-desc { color: #86868b; font-size: 0.95rem; line-height: 1.4; margin-bottom: 20px; }
-
 /* Colors */
 .color-picker { display: flex; margin-bottom: 8px; }
-.color-dot { width: 16px; height: 16px; border-radius: 50%; margin-right: 12px; cursor: pointer; border: 2px solid transparent; }
-.color-dot.active { border-color: #ffffff; }
+.color-dot { width: 16px; height: 16px; border-radius: margin-ht: 12px; cursor: pointer; border: 2px solid transparent; }
+.color-dot.active { border-color: #ffffff;
 .titanium { background: #8a8885; }
 .gold { background: #e3ccb3; }
 .cosmic { background: #2f3033; }
@@ -178,33 +177,34 @@ body {
 /* About Page Custom */
 .about-text { font-size: 1.3rem; color: #a1a1a6; line-height: 1.6; margin-bottom: 60px; }
 .stats-grid { display: flex; justify-content: space-between; margin-top: 40px; }
-.stat-item h3 { font-size: 2.5rem; color: #ffffff; margin-bottom: 5px; }
-.stat-item p { color: #86868b; font-size: 0.9rem; }
+.stat-item h3 { font-size: 2.5rem; color: #ffffff; margin-bottom: 5-item p { color: #86868b; font-size: 0.9rem; }
 
 /* Modal Sign In (Glassmorphism) */
-.modal-overlay {
+.-overlay {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
     z-index: 10000; display: flex; align-items: center; justify-content: center;
-    opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+    : 0; pointer-events: none; transition: opacity 0.3s ease;
 }
 .modal-overlay.open { opacity: 1; pointer-events: auto; }
-.modal-window {
-    background: rgba(30, 30, 30, 0.75); border: 1px solid rgba(255,255,255,0.1);
-    padding: 40px; border-radius: 28px; width: 90%; max-width: 400px; position: relative; text-align: center;
-}
-.close-modal { position: absolute; top: 20px; right: 25px; background: none; border: none; color: #86868b; font-size: 2rem; cursor: pointer; }
-.modal-window h3 { font-size: 1.8rem; margin-bottom: 8px; }
-.modal-window p { color: #86868b; font-size: 0.95rem; margin-bottom: 25px; }
+.modal-window
+    background rgba(30, 30, 30, 0.75); b solid rgba(255,255,255,0.1);
+    padding: ;-radius: 28px; width: 90%;ose-modal { position: absolute; top: 20px; right: none; border: none; color: #86868b; font-size: 2rem; cursor: ; }-window h3 { font-size: 1.8rem; margin-bottom: 8px; }
+.modal p { color: #86868b; font-size: 0.95rem; marin-ottom: 5p
 .auth-form input {
-    width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
-    padding: 14px; border-radius: 12px; color: #fff; font-size: 1rem; margin-bottom: 15px; outline: none;
+    
+
+
+
+
+
+
+
 }
-.full-width { width: 100%; margin-top: 10px; }
+.full-width { th: 100%; margin-top: 10px; }
 
 /* Responsive adjustments */
-@media (min-width: 768px) {
-    .hero { flex-direction: row; text-align: left; max-width: 1000px; margin: 0 auto; justify-content: space-between; }
+@media (min-width: 768px { flex-direction: row; text-align: left; max-width: 1000px; margin: 0 auto; justify-content: space-between; }
     .hero-content { max-width: 50%; margin-bottom: 0; }
     .hero h1 { font-size: 4rem; }
 }
