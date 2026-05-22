@@ -1,39 +1,112 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GadgetWorld Premium</title>
+    <title>GadgetWorld Premium | Ahead of Time</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Подключаем 3D-движок от Google для будущего интерактива -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
 </head>
 <body>
 
+    <!-- Apple-style Navigation Bar -->
     <nav class="navbar">
         <div class="nav-container">
-            <span class="logo">GadgetWorld</span>
+            <span class="logo" id="nav-logo">GadgetWorld</span>
             <div class="nav-links">
-                <a href="#">Смартфоны</a>
-                <a href="#">Планшеты</a>
+                <a href="#" class="nav-tab active" data-target="home">Home</a>
+                <a href="#" class="nav-tab" data-target="store">Store</a>
+                <a href="#" class="nav-tab" data-target="about">About</a>
+                <button class="btn-nav-auth" id="open-auth-btn">Sign In</button>
             </div>
         </div>
     </nav>
 
-    <main class="hero">
-        <div class="hero-content">
-            <span class="tagline">Презентация нового поколения</span>
-            <h1>Улучшая совершенство.</h1>
-            <p>Премиальный дизайн. Невероятная мощь. Мы создаем будущее, которое можно потрогать.</p>
-            <div class="cta-buttons">
-                <button class="btn-primary">Заказать</button>
+    <!-- TAB 1: HOME PAGE -->
+    <section id="home" class="tab-content active-tab">
+        <div class="hero">
+            <div class="hero-content">
+                <span class="tagline">Next Generation</span>
+                <h1>Designed to disrupt.</h1>
+                <p>Premium aesthetics meet raw performance. We don't just predict the future — we build it.</p>
+                <div class="cta-buttons">
+                    <button class="btn-primary" onclick="switchTab('store')">Explore Store</button>
+                </div>
+            </div>
+            <div class="product-box">
+                <div class="mock-phone animate-float">
+                    <div class="phone-screen">Gadget Pro Ultra</div>
+                </div>
             </div>
         </div>
+    </section>
 
-        <div class="product-box">
-            <div class="mock-phone">
-                <div class="phone-screen">Gadget Pro</div>
+    <!-- TAB 2: STORE (PRODUCTS & PRICES) -->
+    <section id="store" class="tab-content">
+        <div class="container">
+            <h2 class="section-title">Choose your next device</h2>
+            <div class="store-grid">
+                
+                <!-- Product Card 1 -->
+                <div class="product-card">
+                    <div class="card-preview">
+                        <!-- Место под 3D-модель. Пока стоит крутой интерактивный куб -->
+                        <div class="card-visual">3D VIEW</div>
+                    </div>
+                    <div class="card-info">
+                        <span class="card-tag">New</span>
+                        <h3>Gadget Pro Ultra</h3>
+                        <p class="card-desc">Titanium chassis, 144Hz OLED screen, and an AI-driven neural processor.</p>
+                        
+                        <!-- Color Selector -->
+                        <div class="color-picker">
+                            <span class="color-dot titanium active" data-color="Space Titanium"></span>
+                            <span class="color-dot gold" data-color="Sunset Gold"></span>
+                            <span class="color-dot cosmic" data-color="Cosmic Black"></span>
+                        </div>
+                        <p class="selected-color-text">Color: <span>Space Titanium</span></p>
+
+                        <div class="card-footer">
+                            <span class="price">$1,199</span>
+                            <button class="btn-buy">Pre-Order</button>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
-    </main>
+    </section>
 
+    <!-- TAB 3: ABOUT US -->
+    <section id="about" class="tab-content">
+        <div class="container small-container">
+            <h2 class="section-title">Our Philosophy</h2>
+            <p class="about-text">At GadgetWorld, we believe that technology should be an extension of yourself. No compromises, no legacy limitations. Every curve, every line of code, and every component is meticulously engineered to deliver an unmatched user experience.</p>
+            <div class="stats-grid">
+                <div class="stat-item"><h3>0.3mm</h3><p>Thinnest Bezel</p></div>
+                <div class="stat-item"><h3>2026</h3><p>Next-Gen Tech</p></div>
+                <div class="stat-item"><h3>100%</h3><p>Eco Titanium</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REGISTRATION / AUTH MODAL (GLASSMORPHISM) -->
+    <div class="modal-overlay" id="auth-modal">
+        <div class="modal-window">
+            <button class="close-modal" id="close-auth-btn">&times;</button>
+            <h3>Create Account</h3>
+            <p>Join the future ecosystem today.</p>
+            <form class="auth-form" onsubmit="event.preventDefault(); alert('Account created successfully (Simulation)!');">
+                <input type="text" placeholder="Full Name" required>
+                <input type="email" placeholder="Email Address" required>
+                <input type="password" placeholder="Password" required>
+                <button type="submit" class="btn-primary full-width">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Подключаем наш скрипт логики -->
+    <script src="script.js"></script>
 </body>
 </html>
