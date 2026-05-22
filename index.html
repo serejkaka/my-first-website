@@ -3,36 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FinConsult & Chargeback Partner</title>
+    <title>TechStore — Магазин оригинальной техники</title>
     <style>
         :root {
-            --bg-primary: #0f172a;
-            --bg-secondary: #1e293b;
-            --accent: #3b82f6;
-            --accent-hover: #2563eb;
-            --text-main: #f8fafc;
+            --bg-main: #0f172a;
+            --bg-card: #1e293b;
+            --accent: #2563eb;
+            --accent-hover: #1d4ed8;
+            --text-light: #f8fafc;
             --text-muted: #94a3b8;
-            --success: #10b981;
             --border: #334155;
+            --success: #10b981;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            background-color: var(--bg-primary);
-            color: var(--text-main);
-            padding-bottom: 40px;
+            background-color: var(--bg-main);
+            color: var(--text-light);
+            padding-bottom: 60px;
         }
 
-        /* Навигация */
+        /* Шапка сайта */
         header {
-            background-color: var(--bg-secondary);
+            background-color: var(--bg-card);
             border-bottom: 1px solid var(--border);
             padding: 15px 20px;
             display: flex;
@@ -44,36 +44,55 @@
         }
 
         .logo {
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: var(--text-main);
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            font-weight: 800;
+            font-size: 1.3rem;
+            letter-spacing: 0.5px;
         }
 
         .logo span {
             color: var(--accent);
         }
 
-        .nav-controls {
+        .header-actions {
             display: flex;
             align-items: center;
             gap: 12px;
         }
 
-        .lang-btn {
+        .btn-lang {
             background: none;
             border: 1px solid var(--border);
-            color: var(--text-main);
+            color: var(--text-light);
             padding: 6px 12px;
             border-radius: 6px;
             cursor: pointer;
-            font-size: 0.85rem;
             font-weight: 600;
+            font-size: 0.85rem;
         }
 
-        .sign-btn {
+        .btn-cart-trigger {
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.3rem;
+            position: relative;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -4px;
+            right: -6px;
+            background-color: var(--accent);
+            color: white;
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        .btn-sign {
             background-color: var(--accent);
             color: white;
             border: none;
@@ -81,163 +100,223 @@
             border-radius: 6px;
             font-weight: 600;
             cursor: pointer;
-            transition: background 0.2s;
         }
 
-        .sign-btn:hover {
-            background-color: var(--accent-hover);
-        }
-
-        /* Главный контейнер */
-        main {
-            max-width: 800px;
+        /* Баннер */
+        .promo-banner {
+            max-width: 1200px;
             margin: 20px auto;
             padding: 0 15px;
         }
 
-        .welcome-card {
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            border: 1px solid var(--border);
-            padding: 25px 20px;
+        .banner-card {
+            background: linear-gradient(135deg, #1d4ed8 0%, #0f172a 100%);
             border-radius: 12px;
-            margin-bottom: 25px;
+            padding: 30px 20px;
+            text-align: center;
+            border: 1px solid var(--border);
         }
 
-        h1 {
-            font-size: 1.6rem;
-            margin-bottom: 10px;
-            line-height: 1.3;
+        .banner-card h1 {
+            font-size: 1.7rem;
+            margin-bottom: 8px;
         }
 
-        p.subtitle {
-            color: var(--text-muted);
+        .banner-card p {
+            color: #cbd5e1;
             font-size: 0.95rem;
-            line-height: 1.5;
-            margin-bottom: 15px;
         }
 
-        /* Стили плашек Блоков / Инструментов */
-        .grid-section {
-            margin-bottom: 30px;
+        /* Каталог товаров */
+        .catalog-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
         }
 
-        h2 {
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-            color: var(--text-main);
+        .section-title {
+            font-size: 1.3rem;
+            margin: 25px 0 15px 0;
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
-        .bank-table-container {
-            background-color: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            overflow-x: auto;
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: left;
-            font-size: 0.9rem;
-        }
-
-        th, td {
-            padding: 12px 16px;
-            border-bottom: 1px solid var(--border);
-        }
-
-        th {
-            background-color: #172554;
-            color: var(--text-main);
-            font-weight: 600;
-        }
-
-        tr:last-child td {
-            border-bottom: none;
-        }
-
-        .status-badge {
-            display: inline-block;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            background-color: rgba(16, 185, 129, 0.2);
-            color: var(--success);
-        }
-
-        /* Интерактивный Симулятор Кейса */
-        .simulator-card {
-            background-color: var(--bg-secondary);
+        .product-card {
+            background-color: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 12px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-img {
+            width: 100%;
+            height: 180px;
+            background-color: #334155;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .product-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .product-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+
+        .product-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-light);
+        }
+
+        .btn-add {
+            background-color: #334155;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+
+        .btn-add:hover {
+            background-color: var(--accent);
+        }
+
+        /* Выпадающее окно корзины */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            max-width: 400px;
+            height: 100%;
+            background-color: var(--bg-card);
+            border-left: 1px solid var(--border);
+            z-index: 200;
+            transition: right 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            box-shadow: -5px 0 25px rgba(0,0,0,0.5);
+        }
+
+        .cart-sidebar.open {
+            right: 0;
+        }
+
+        .cart-header {
+            padding: 20px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .btn-close {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.6rem;
+            cursor: pointer;
+        }
+
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
             padding: 20px;
         }
 
-        .form-group {
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            background-color: var(--bg-main);
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .cart-item-details h4 {
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+
+        .cart-item-details p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .btn-remove {
+            background: none;
+            border: none;
+            color: #ef4444;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        .cart-footer {
+            padding: 20px;
+            border-top: 1px solid var(--border);
+            background-color: #172554;
+        }
+
+        .total-price-box {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.1rem;
+            font-weight: 700;
             margin-bottom: 15px;
         }
 
-        label {
-            display: block;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 6px;
-            font-weight: 500;
-        }
-
-        select, input {
+        .btn-checkout {
             width: 100%;
-            background-color: var(--bg-primary);
-            border: 1px solid var(--border);
-            color: var(--text-main);
-            padding: 10px;
-            border-radius: 6px;
-            font-size: 0.95rem;
-            outline: none;
-        }
-
-        select:focus, input:focus {
-            border-color: var(--accent);
-        }
-
-        .action-btn {
-            width: 100%;
-            background-color: #475569;
+            background-color: var(--success);
             color: white;
             border: none;
             padding: 12px;
             border-radius: 6px;
-            font-weight: 600;
-            font-size: 0.95rem;
+            font-weight: 700;
             cursor: pointer;
-            margin-top: 5px;
         }
 
-        .action-btn.active {
-            background-color: var(--accent);
-        }
-
-        .result-box {
-            margin-top: 15px;
-            padding: 15px;
-            background-color: rgba(59, 130, 246, 0.1);
-            border-left: 4px solid var(--accent);
-            border-radius: 0 8px 8px 0;
-            display: none;
-        }
-
-        /* Модальное окно SIGN IN */
+        /* Модалка SIGN IN */
         .modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: rgba(0, 0, 0, 0.75);
+            background-color: rgba(0, 0, 0, 0.8);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -254,40 +333,34 @@
         }
 
         .modal-content {
-            background-color: var(--bg-secondary);
+            background-color: var(--bg-card);
             border: 1px solid var(--border);
             padding: 25px;
             border-radius: 12px;
             width: 100%;
-            max-width: 400px;
+            max-width: 360px;
             position: relative;
         }
 
-        .close-modal {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: none;
-            border: none;
-            color: var(--text-muted);
-            font-size: 1.5rem;
-            cursor: pointer;
+        .form-group {
+            margin-bottom: 15px;
         }
 
-        /* Кастомные заглушки под "картинки" для автономности кода */
-        .image-placeholder {
+        label {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        input {
             width: 100%;
-            height: 140px;
-            background: linear-gradient(45deg, #1e3a8a, #3b82f6);
-            border-radius: 8px;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background-color: var(--bg-main);
+            border: 1px solid var(--border);
             color: white;
-            font-weight: bold;
-            font-size: 1.1rem;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            padding: 10px;
+            border-radius: 6px;
+            outline: none;
         }
     </style>
 </head>
@@ -295,227 +368,230 @@
 
     <!-- Навигация -->
     <header>
-        <div class="logo">⚖️ Fin<span>Dispute</span></div>
-        <div class="nav-controls">
-            <button class="lang-btn" id="langBtn" onclick="toggleLanguage()">EN</button>
-            <button class="sign-btn" id="signBtn" onclick="openModal()">Sign In</button>
+        <div class="logo">⚡ Tech<span>Store</span></div>
+        <div class="header-actions">
+            <button class="btn-lang" id="langBtn" onclick="toggleLanguage()">EN</button>
+            <button class="btn-cart-trigger" onclick="toggleCart(true)">
+                🛒 <span class="cart-badge" id="cartCount">0</span>
+            </button>
+            <button class="btn-sign" id="signBtn" onclick="toggleModal(true)">Sign In</button>
         </div>
     </header>
 
-    <!-- Основной контент -->
-    <main>
-        <div class="welcome-card">
-            <div class="image-placeholder" id="heroImg">International Banking Disputes</div>
-            <h1 id="mainTitle">Защита прав потребителей и международные чарджбэки</h1>
-            <p class="subtitle" id="mainSub">Анализ логистических цепочек, выявление манипуляций перевозчиков (DHL, UPS, PostNL) и оспаривание необоснованных отказов мерчантов.</p>
+    <!-- Баннер -->
+    <section class="promo-banner">
+        <div class="banner-card">
+            <h1 id="bannerTitle">⚡ Флагманская техника 2026</h1>
+            <p id="bannerDesc">Только оригинальные девайсы от Apple, Logitech и Dyson с официальной гарантией.</p>
         </div>
+    </section>
 
-        <!-- Секция 1: Таблица эффективности -->
-        <div class="grid-section">
-            <h2 id="tableTitle">📈 Статистика споров по институтам (2026)</h2>
-            <div class="bank-table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Bank / Institution</th>
-                            <th id="thTime">Сроки решения</th>
-                            <th id="thRate">Успешность</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Revolut</strong></td>
-                            <td>30-45 дней</td>
-                            <td><span class="status-badge">Высокая (82%)</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Wise</strong></td>
-                            <td>45-60 дней</td>
-                            <td><span class="status-badge">Стабильная (75%)</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>ZEN (Care program)</strong></td>
-                            <td>14-30 дней</td>
-                            <td><span class="status-badge">Высокая (80%)</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- Секция 2: Интерактивный калькулятор/симулятор -->
-        <div class="grid-section">
-            <h2 id="simTitle">⚙️ Симулятор оценки основания диспута</h2>
-            <div class="simulator-card">
-                <div class="form-group">
-                    <label id="lblMerchant" for="merchantType">Тип крупного ритейлера (Мерчант):</label>
-                    <select id="merchantType">
-                        <option value="logitech">Logitech (Сложные возвраты электроники)</option>
-                        <option value="apple">Apple (Блокировки по внутренним правилам)</option>
-                        <option value="amazon">Amazon (Проблемы с весом посылок/доставкой)</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label id="lblReason" for="reasonCode">Причина оспаривания транзакции:</label>
-                    <select id="reasonCode">
-                        <option value="returned">Товар возвращен, но мерчант отказывает в рефаунде</option>
-                        <option value="weight">Манипуляции курьера / Расхождение веса в трек-номере</option>
-                        <option value="rules">Несоответствие внутренних правил банка правилам Visa/MC</option>
-                    </select>
-                </div>
-                <button class="action-btn active" id="btnCalc" onclick="runSimulation()">Сгенерировать стратегию атаки</button>
-                
-                <div class="result-box" id="resultBox">
-                    <strong id="resStrategy">Рекомендуемая стратегия:</strong>
-                    <p id="resText" style="margin-top: 8px; font-size: 0.9rem; line-height: 1.4; color: #cbd5e1;"></p>
-                </div>
-            </div>
+    <!-- Каталог -->
+    <main class="catalog-container">
+        <h2 class="section-title" id="catalogTitle">🔥 Популярные товары</h2>
+        <div class="products-grid" id="productsGrid">
+            <!-- Сюда скрипт вставит карточки -->
         </div>
     </main>
 
-    <!-- Модальное окно (Sign In) -->
-    <div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
-        <div class="modal-content">
-            <button class="close-modal" onclick="closeModal()">&times;</button>
-            <h2 id="modalTitle" style="margin-bottom: 20px; color: white;">Вход в партнерскую панель</h2>
-            <div class="form-group">
-                <label for="email">Email / Client ID</label>
-                <input type="email" id="email" placeholder="partner@dispute.int">
+    <!-- Боковая корзина -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3 id="cartTitle">Ваша корзина</h3>
+            <button class="btn-close" onclick="toggleCart(false)">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItemsList">
+            <!-- Элементы корзины -->
+        </div>
+        <div class="cart-footer">
+            <div class="total-price-box">
+                <span id="totalLabel">Итого:</span>
+                <span id="totalPriceDisplay">$0</span>
             </div>
-            <div class="form-group" style="margin-bottom: 20px;">
-                <label id="lblPass" for="password">Пароль</label>
-                <input type="password" id="password" placeholder="••••••••">
-            </div>
-            <button class="sign-btn" id="btnSubmitModal" style="width: 100%; padding: 12px;" onclick="handleLogin()">Войти</button>
+            <button class="btn-checkout" id="btnCheckout" onclick="checkout()">Оформить заказ</button>
         </div>
     </div>
 
-    <!-- Логика сайта -->
+    <!-- Модалка логина -->
+    <div class="modal-overlay" id="loginModal" onclick="closeModalOutside(event)">
+        <div class="modal-content">
+            <button class="btn-close" style="position: absolute; top: 15px; right: 15px;" onclick="toggleModal(false)">&times;</button>
+            <h3 id="modalHeader" style="margin-bottom: 20px;">Вход в аккаунт</h3>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="loginEmail" placeholder="your@email.com">
+            </div>
+            <div class="form-group">
+                <label id="lblPass">Пароль</label>
+                <input type="password" placeholder="••••••••">
+            </div>
+            <button class="btn-sign" id="btnSubmitModal" style="width: 100%; padding: 12px; margin-top: 10px;" onclick="handleLogin()">Войти</button>
+        </div>
+    </div>
+
     <script>
-        // Хранилище языковых пакетов
+        // Данные товаров
+        const products = [
+            { id: 1, name: "Apple iPhone 15 Pro", category: "apple", price: 999, emoji: "📱", desc: "Titanium body, A17 Pro chip.", descRu: "Титановый корпус, чип A17 Pro, идеальная камера." },
+            { id: 2, name: "Logitech MX Master 3S", category: "logitech", price: 109, emoji: "🖱️", desc: "Ergonomic wireless mouse, silent clicks.", descRu: "Эргономичная беспроводная мышь, тихий клик." },
+            { id: 3, name: "Dyson Airwrap Multistyler", category: "dyson", price: 599, emoji: "💇", desc: "Special edition multi-styler for hair.", descRu: "Мультистайлер для бережного ухода и укладки волос." },
+            { id: 4, name: "Apple MacBook Pro 14\"", category: "apple", price: 1599, emoji: "💻", desc: "Liquid Retina XDR display, M3 chip.", descRu: "Дисплей Liquid Retina XDR, мощный процессор M3." }
+        ];
+
+        // Локализация
         const langData = {
             RU: {
-                langBtn: "EN",
-                signBtn: "Войти",
-                mainTitle: "Защита прав потребителей и международные чарджбэки",
-                mainSub: "Анализ логистических цепочек, выявление манипуляций перевозчиков (DHL, UPS, PostNL) и оспаривание необоснованных отказов мерчантов.",
-                tableTitle: "📈 Статистика споров по институтам (2026)",
-                thTime: "Сроки решения",
-                thRate: "Успешность",
-                simTitle: "⚙️ Симулятор оценки основания диспута",
-                lblMerchant: "Тип крупного ритейлера (Мерчант):",
-                lblReason: "Причина оспаривания транзакции:",
-                btnCalc: "Сгенерировать стратегию атаки",
-                modalTitle: "Вход в партнерскую панель",
-                lblPass: "Пароль",
-                btnSubmitModal: "Войти",
-                heroTxt: "Международные банковские споры"
+                langBtn: "EN", signBtn: "Войти", bannerTitle: "⚡ Флагманская техника 2026",
+                bannerDesc: "Только оригинальные девайсы от Apple, Logitech и Dyson с официальной гарантией.",
+                catalogTitle: "🔥 Популярные товары", cartTitle: "Ваша корзина", totalLabel: "Итого:",
+                btnCheckout: "Оформить заказ", modalHeader: "Вход в аккаунт", lblPass: "Пароль",
+                btnSubmitModal: "Войти", addBtn: "В корзину", removeBtn: "Удалить"
             },
             EN: {
-                langBtn: "RU",
-                signBtn: "Sign In",
-                mainTitle: "Consumer Protection & International Chargebacks",
-                mainSub: "Analysis of logistics chains, detection of courier manipulation (DHL, UPS, PostNL), and challenging unjustified merchant refund denials.",
-                tableTitle: "📈 Dispute Resolution Statistics (2026)",
-                thTime: "Timeframe",
-                thRate: "Success Rate",
-                simTitle: "⚙️ Dispute Basis Evaluation Simulator",
-                lblMerchant: "Major Retailer Type (Merchant):",
-                lblReason: "Dispute Reason / Visa-MC Code:",
-                btnCalc: "Generate Attack Strategy",
-                modalTitle: "Partner Panel Login",
-                lblPass: "Password",
-                btnSubmitModal: "Login",
-                heroTxt: "International Banking Disputes"
+                langBtn: "RU", signBtn: "Sign In", bannerTitle: "⚡ Flagship Tech 2026",
+                bannerDesc: "Only original devices from Apple, Logitech, and Dyson with official warranty.",
+                catalogTitle: "🔥 Popular Products", cartTitle: "Your Cart", totalLabel: "Total:",
+                btnCheckout: "Checkout", modalHeader: "Account Login", lblPass: "Password",
+                btnSubmitModal: "Login", addBtn: "To Cart", removeBtn: "Remove"
             }
         };
 
         let currentLang = 'RU';
+        let cart = [];
 
+        // Рендер каталога
+        function renderCatalog() {
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = '';
+            
+            products.forEach(p => {
+                const descText = currentLang === 'RU' ? p.descRu : p.desc;
+                const btnText = langData[currentLang].addBtn;
+                
+                grid.innerHTML += `
+                    <div class="product-card">
+                        <div>
+                            <div class="product-img">${p.emoji}</div>
+                            <div class="product-title">${p.name}</div>
+                            <div class="product-desc">${descText}</div>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-price">$${p.price}</div>
+                            <button class="btn-add" onclick="addToCart(${p.id})">${btnText}</button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        // Переключение языка
         function toggleLanguage() {
             currentLang = currentLang === 'RU' ? 'EN' : 'RU';
             const data = langData[currentLang];
 
-            // Обновляем текст на странице
             document.getElementById('langBtn').innerText = data.langBtn;
             document.getElementById('signBtn').innerText = data.signBtn;
-            document.getElementById('mainTitle').innerText = data.mainTitle;
-            document.getElementById('mainSub').innerText = data.mainSub;
-            document.getElementById('tableTitle').innerText = data.tableTitle;
-            document.getElementById('thTime').innerText = data.thTime;
-            document.getElementById('thRate').innerText = data.thRate;
-            document.getElementById('simTitle').innerText = data.simTitle;
-            document.getElementById('lblMerchant').innerText = data.lblMerchant;
-            document.getElementById('lblReason').innerText = data.lblReason;
-            document.getElementById('btnCalc').innerText = data.btnCalc;
-            document.getElementById('modalTitle').innerText = data.modalTitle;
+            document.getElementById('bannerTitle').innerText = data.bannerTitle;
+            document.getElementById('bannerDesc').innerText = data.bannerDesc;
+            document.getElementById('catalogTitle').innerText = data.catalogTitle;
+            document.getElementById('cartTitle').innerText = data.cartTitle;
+            document.getElementById('totalLabel').innerText = data.totalLabel;
+            document.getElementById('btnCheckout').innerText = data.btnCheckout;
+            document.getElementById('modalHeader').innerText = data.modalHeader;
             document.getElementById('lblPass').innerText = data.lblPass;
             document.getElementById('btnSubmitModal').innerText = data.btnSubmitModal;
-            document.getElementById('heroImg').innerText = data.heroTxt;
 
-            // Скрываем результат симуляции при смене языка, чтобы не путать
-            document.getElementById('resultBox').style.display = 'none';
+            renderCatalog();
+            renderCart();
         }
 
-        // Управление модальным окном Sign In
-        function openModal() {
-            document.getElementById('modalOverlay').classList.add('open');
+        // Логика корзины
+        function addToCart(id) {
+            const product = products.find(p => p.id === id);
+            const exists = cart.find(item => item.id === id);
+            
+            if (exists) {
+                exists.quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+            renderCart();
         }
 
-        function closeModal() {
-            document.getElementById('modalOverlay').classList.remove('open');
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            renderCart();
+        }
+
+        function renderCart() {
+            const cartList = document.getElementById('cartItemsList');
+            const cartCount = document.getElementById('cartCount');
+            const totalPriceDisplay = document.getElementById('totalPriceDisplay');
+            
+            cartList.innerHTML = '';
+            let total = 0;
+            let count = 0;
+
+            cart.forEach(item => {
+                total += item.price * item.quantity;
+                count += item.quantity;
+                const rmText = langData[currentLang].removeBtn;
+
+                cartList.innerHTML += `
+                    <div class="cart-item">
+                        <div class="cart-item-details">
+                            <h4>${item.name}</h4>
+                            <p>$${item.price} x ${item.quantity}</p>
+                        </div>
+                        <button class="btn-remove" onclick="removeFromCart(${item.id})">${rmText}</button>
+                    </div>
+                `;
+            });
+
+            cartCount.innerText = count;
+            totalPriceDisplay.innerText = `$${total}`;
+        }
+
+        function toggleCart(show) {
+            const sidebar = document.getElementById('cartSidebar');
+            if (show) sidebar.classList.add('open');
+            else sidebar.classList.remove('open');
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                alert(currentLang === 'RU' ? "Корзина пуста!" : "Cart is empty!");
+                return;
+            }
+            alert(currentLang === 'RU' ? "Заказ успешно оформлен!" : "Order placed successfully!");
+            cart = [];
+            renderCart();
+            toggleCart(false);
+        }
+
+        // Модалка входа
+        function toggleModal(show) {
+            const modal = document.getElementById('loginModal');
+            if (show) modal.classList.add('open');
+            else modal.classList.remove('open');
         }
 
         function closeModalOutside(e) {
-            if (e.target.id === 'modalOverlay') {
-                closeModal();
-            }
+            if (e.target.id === 'loginModal') toggleModal(false);
         }
 
         function handleLogin() {
-            const email = document.getElementById('email').value;
-            if(!email) {
-                alert(currentLang === 'RU' ? 'Пожалуйста, введите Email / ID' : 'Please enter Email / ID');
+            const email = document.getElementById('loginEmail').value;
+            if (!email) {
+                alert(currentLang === 'RU' ? "Введите email!" : "Enter email!");
                 return;
             }
-            alert(currentLang === 'RU' ? `Успешное подключение для: ${email}` : `Successfully connected for: ${email}`);
-            closeModal();
+            alert(currentLang === 'RU' ? `Приветствуем, ${email}!` : `Welcome, ${email}!`);
+            toggleModal(false);
         }
 
-        // Интерактивный симулятор стратегий
-        function runSimulation() {
-            const merchant = document.getElementById('merchantType').value;
-            const reason = document.getElementById('reasonCode').value;
-            const resultBox = document.getElementById('resultBox');
-            const resText = document.getElementById('resText');
-
-            let strategy = "";
-
-            if (currentLang === 'RU') {
-                if (reason === 'returned') {
-                    strategy = `Инициировать чарджбэк по правилам Visa/Mastercard (Reason Code: Товар возвращен). Приложить официальный трек-номер возврата (например, во Францию/Нидерланды) с отметкой Delivered, инвойс и копию переписки, где мерчант ${merchant.toUpperCase()} подтверждает получение или немотивированно отказывает. Внутренние регламенты бренда не могут превалировать над правилами платежной системы.`;
-                } else if (reason === 'weight') {
-                    strategy = `Кейс требует жесткого аудита логистической цепочки. Запросить у перевозчика (DHL/UPS) официальную накладную с весом при приеме и при импорте. Подать претензию в банк, упирая на расхождение данных веса (манипуляции на стороне службы доставки), блокируя аргумент мерчанта об "пустой посылке".`;
-                } else {
-                    strategy = `Если это ZEN или аналогичный финтех, заявляем протест против их внутренних ограничений программ защиты. Ссылаемся на европейское законодательство о защите прав потребителей. Тот факт, что имя на заказе и на карте имеет минимальные различия, не аннулирует платеж, если плательщик верифицирован через 3D Secure.`;
-                }
-            } else {
-                // Английская версия стратегий
-                if (reason === 'returned') {
-                    strategy = `Initiate a chargeback under Visa/Mastercard regulations (Reason Code: Merchandise Returned). Provide the official return tracking (e.g., to France/Netherlands) marked as Delivered, original invoice, and merchant communication logs. Internal ${merchant.toUpperCase()} policies cannot override global payment system rules.`;
-                } else if (reason === 'weight') {
-                    strategy = `Requires strict logistics chain audit. Request official weight receipts at acceptance and import gates from DHL/UPS. File a dispute emphasizing weight discrepancies to counter the merchant's "empty box" defense.`;
-                } else {
-                    strategy = `Challenging fintech internal rules (e.g., ZEN Care limitations). Pivot to EU Consumer Rights Directive. Minor mismatch between order name and cardholder name is invalid if the transaction successfully passed 3D Secure verification.`;
-                }
-            }
-
-            resText.innerText = strategy;
-            resultBox.style.display = 'block';
-            
-            // Плавный скролл к результату на мобильном
-            resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
+        // Старт страницы
+        renderCatalog();
     </script>
 </body>
 </html>
